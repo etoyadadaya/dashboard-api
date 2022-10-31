@@ -1,5 +1,5 @@
 import { LoggerService } from "../logger/logger.service";
-import {Response, Router} from "express";
+import { Response, Router } from "express";
 import { IControllerRoute } from "./route.interface";
 export { Router } from 'express';
 
