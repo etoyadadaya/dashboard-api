@@ -36,8 +36,8 @@ export class App {
 	}
 
 	public async init(): Promise<void> {
-		this.useRoutes();
 		this.useMiddleware();
+		this.useRoutes();
 		this.useExceptionFilters();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`server started on http://localhost:${this.port}`);
