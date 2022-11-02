@@ -34,6 +34,12 @@ export class UserController extends BaseController implements IUserController {
 				func: this.login,
 				middlewares: [new ValidateMiddleware(UserLoginDto)],
 			},
+			{
+				path: '/info',
+				method: 'get',
+				func: this.info,
+				middlewares: [],
+			},
 		]);
 	}
 
@@ -44,7 +50,7 @@ export class UserController extends BaseController implements IUserController {
 	): Promise<void> {
 		const result = await this.userService.validateUser(req.body);
 		if (!result) {
-			return next(new HTTPError(401, 'User does not exist'));
+			return next(new HTTPError(401, 'User does not exist', 'login'));
 		}
 		const jwt = await this.signJWT(req.body.email, this.configService.get('SECRET'));
 		this.ok(res, { jwt });
@@ -60,6 +66,10 @@ export class UserController extends BaseController implements IUserController {
 			return next(new HTTPError(422, 'User exist'));
 		}
 		this.ok(res, { email: result.email, id: result.id });
+	}
+
+	async info({ user }: Request, res: Response, next: NextFunction): Promise<void> {
+		this.ok(res, { email: user });
 	}
 
 	private signJWT(email: string, secret: string): Promise<string> {
