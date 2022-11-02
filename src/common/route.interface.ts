@@ -8,4 +8,4 @@ export interface IControllerRoute {
 	middlewares?: IMiddleware[];
 }
 
-export type ExpressReturnType = Response;
+export type ExpressReturnType = Response<any, Record<string, any>>;
