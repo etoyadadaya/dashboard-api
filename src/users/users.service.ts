@@ -1,8 +1,8 @@
-import { IUserService } from './users.service.interface';
-import { UserRegisterDto } from './user-register.dto';
-import { User } from '../user.entity';
 import { injectable } from 'inversify';
-import { UserLoginDto } from './user-login.dto';
+import { IUserService } from './users.service.interface';
+import { UserRegisterDto } from './dto/user-register.dto';
+import { User } from './user.entity';
+import { UserLoginDto } from './dto/user-login.dto';
 
 @injectable()
 export class UserService implements IUserService {

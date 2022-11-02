@@ -5,10 +5,10 @@ import { inject, injectable } from 'inversify';
 import { TYPES } from '../types';
 import { ILogger } from '../logger/logger.interface';
 import 'reflect-metadata';
-import { IUserController } from './user.controller';
+import { IUserController } from './users.controller.interface';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
-import { UserService } from './dto/users.service';
+import { UserService } from './users.service';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
